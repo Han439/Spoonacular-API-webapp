@@ -1,0 +1,8 @@
+{% extends 'ingredients\base.html' %}
+
+{% block content %}
+<form method="GET" action="{% url 'all_recipes' %}">
+	{{ form.as_p }}
+	<input type="submit" name="Search">
+</form>
+{% endblock %}
