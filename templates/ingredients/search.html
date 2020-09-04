@@ -1,0 +1,32 @@
+{% extends 'ingredients\base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+	<div class="search-page">
+		<div class="container">
+			<div><i class="fas"></i></div>
+			<nav class="header">
+				<h1><a href="{% url 'recipe_by_ingredients' %}">FOOD RANGER</a></h1>
+				<ul class="nav-bar">
+					<li><a href="https://spoonacular.com/food-api">HELP</a></li>
+					<li><a href="https://spoonacular.com/food-api/faq">FAQ</a></li>
+					<li><a href="https://spoonacular.com/contact">CONTACT</a></li>
+				</ul>
+			</nav>
+			<div class="search">
+				<div class="introduce-text">
+					<h2>What's In Your <br> Fridge?</h2>
+					<p>Ever wondered what recipes you can cook with the ingredients you have in your fridge or pantry? Find the best recipes for your next meal from our support</p>
+				</div>
+				<form method="GET" action="{% url 'all_recipes' %}" class="search-form">
+					<input type="text" name="ingredients" maxlength="200" required id="id_ingredients" class="search-bar" placeholder="strawberry, ice scream, chocolate">
+					<button type="submit" class="btn"><i class="fa fa-search"></i></button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<img src="{% static 'images/landing-page.jpg' %}" class="background-image">
+</section>
+
+{% endblock %}

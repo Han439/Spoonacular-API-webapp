@@ -1,0 +1,75 @@
+{% extends 'ingredients\base.html' %}
+
+{% block content %}
+<div class="bg-pattern">
+    <section class="recipe-section">
+      <div class="recipe-header">
+        <div class="container">
+          {% include 'ingredients/nav.html' %}
+          <div class="search">
+            <form
+              method="GET"
+              action="{% url 'all_recipes' %}"
+              class="recipe-search-form"
+            >
+              <input
+                type="text"
+                name="ingredients"
+                maxlength="200"
+                required
+                id="id_ingredients"
+                class="search-bar recipe-search-bar"
+                placeholder="strawberry, ice scream, chocolate"
+                value="{{ request.GET.ingredients }}"
+              />
+              <button type="submit" class="btn btn-sm">
+                <i class="fa fa-search"></i>
+              </button>
+            </form>
+          </div>
+          <hr />
+        </div>
+      </div>
+    </section>
+
+    <!-- result -->
+    <section recipe-section>
+      <div class="container">
+        <div class="grid-layout">
+        	{% for recipe in recipes %}
+	          <div class="recipe-container">
+	            <div class="recipe-text">
+	              <h3>{{ recipe.title|truncatewords:8 }}</h3>
+	              <p><span>Missed Ingredients:</span>
+	              	{% for miss in recipe.missedIngredients %}
+	              		{{ miss.name }}{% if forloop.last %}.{% else %},{% endif %}
+	              	{% empty %}
+	              		None
+	              	{% endfor %}
+	          		</p>
+	              <p><span>Unused Ingredients:</span>
+	              	{% for unuse in recipe.unusedIngredients %}
+	              		{{ unuse.name }}{% if forloop.last %}.{% else %},{% endif %}
+	              	{% empty %}
+	              		None
+	              	{% endfor %}
+	              </p>
+	              <div>
+	                <div class="border-btn"></div>
+	                <a href="{% url 'recipe_detail' recipe.id %}" class="special-btn"
+	                  >Learn More</a
+	                >
+	              </div>
+	            </div>
+	            <div class="recipe-image">
+	              <img src="https://spoonacular.com/recipeImages/{{recipe.id}}-556x370.jpg" alt="" />
+	            </div>
+	          </div>
+          	{% endfor %}
+        </div>
+      </div>
+    </section>
+
+    {% include 'ingredients/footer.html' %}
+</div>
+{% endblock %}
