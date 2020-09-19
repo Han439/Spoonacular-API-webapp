@@ -386,14 +386,6 @@ hr {
     justify-content: center;
   }
 
-  .header h1{
-    margin-top: 45%;
-  }
-
-  .header h1 a {
-    font-size: 3rem;
-  }
-
   .show {
     visibility: initial;
   }
