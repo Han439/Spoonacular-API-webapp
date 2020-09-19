@@ -23,7 +23,7 @@ def all_recipes(request):
 			ingredients_list = str(form.cleaned_data['ingredients']).split()
 			# config API before sending
 			uri = 'https://api.spoonacular.com/recipes/findByIngredients'
-			params = {'apiKey': keys, 'ingredients': ingredients_list, 'number': '5'}
+			params = {'apiKey': keys, 'ingredients': ingredients_list, 'number': '15'}
 			
 			# get the API response
 			response = requests.get(uri, params=params)
