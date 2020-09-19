@@ -392,6 +392,10 @@ hr {
   .show {
     visibility: initial;
   }
+
+  .introduce-text {
+    visibility: hidden;
+  }
 }
 
 @media (max-width: 450px) {

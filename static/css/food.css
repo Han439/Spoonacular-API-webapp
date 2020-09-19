@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&family=Satisfy&display=swap");
 :root {
   --bg-color: rgba(247, 193, 48, 0.8);
+  --full-bg-color: rgba(247, 193, 48);
   --main-color: #646464;
   --sub-color: #f2f1f1;
   --border-color: #504f4f;
@@ -50,7 +51,7 @@ hr {
 
 .header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
   height: 10vh;
@@ -103,13 +104,14 @@ hr {
 
 .search-form {
   position: absolute;
+  width: 60%;
   top: 50%;
   left: 51%;
   transform: translate(-50%, -50%);
 }
 
 .search-bar {
-  width: 500px;
+  width: 80%;
   height: 50px;
   border: 1px solid var(--border-color);
   border-radius: 40px;
@@ -141,7 +143,6 @@ hr {
 
 /* recipes result */
 .bg-pattern {
-  background-image: url("../images/bg-patternn.jpg");
   background-size: cover;
   background-repeat: repeat;
 }
@@ -171,7 +172,7 @@ hr {
 .grid-layout {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 20px;
+  grid-gap: 50px;
   justify-content: center;
   align-content: center;
 }
@@ -313,4 +314,97 @@ hr {
 .footer p {
   text-align: center;
   line-height: 100px;
+}
+
+/* Hamberger Menu */
+
+.bars {
+  position: absolute;
+  right: 30px;
+  top: 15px;
+  color: var(--bg-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.close {
+  position: fixed;
+  right: 30px;
+  top: 15px;
+  color: #fff;
+  font-size: 1.5rem;
+  z-index: 20;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+/* responsive */
+
+@media (max-width: 600px) {
+  .recipe-title {
+    flex-direction: column;
+  }
+  .detail-layout {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .nav-bar {
+    width: 40%;
+    height: 100vh;
+    background-color: var(--bg-color);
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+
+    transform: translateX(600px);
+    transition: all 0.5s;
+    display: none;
+  }
+
+  .nav-bar li a {
+    color: #fff !important;
+    display: inline-block;
+    padding-bottom: 10px;
+    width: 100px;
+    border-bottom: 1px solid #fff;
+  }
+
+  .transform {
+    transform: translateX(0);
+    position: fixed;
+  }
+
+  .header {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .header h1{
+    margin-top: 45%;
+  }
+
+  .header h1 a {
+    font-size: 3rem;
+  }
+
+  .show {
+    visibility: initial;
+  }
+
+  .introduce-text {
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 450px) {
+  .recipe-container {
+    width: initial;
+  }
 }

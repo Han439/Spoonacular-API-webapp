@@ -143,7 +143,7 @@ hr {
 
 /* recipes result */
 .bg-pattern {
-  background-image: url("../image/bg-patternn.jpg");
+  background-image: url("../images/bg-patternn.jpg");
   background-size: cover;
   background-repeat: repeat;
 }
@@ -319,26 +319,26 @@ hr {
 
 /* Hamberger Menu */
 
-  .bars {
-    position: absolute;
-    right: 30px;
-    top: 15px;
-    color: var(--bg-color);
-    font-size: 1.5rem;
-    cursor: pointer;
-    visibility: hidden;
-  }
+.bars {
+  position: absolute;
+  right: 30px;
+  top: 15px;
+  color: var(--bg-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  visibility: hidden;
+}
 
-  .close {
-    position: fixed;
-    right: 30px;
-    top: 15px;
-    color: #fff;
-    font-size: 1.5rem;
-    z-index: 20;
-    cursor: pointer;
-    visibility: hidden;
-  }
+.close {
+  position: fixed;
+  right: 30px;
+  top: 15px;
+  color: #fff;
+  font-size: 1.5rem;
+  z-index: 20;
+  cursor: pointer;
+  visibility: hidden;
+}
 
 /* responsive */
 
@@ -366,6 +366,7 @@ hr {
 
     transform: translateX(600px);
     transition: all 0.5s;
+    display: none;
   }
 
   .nav-bar li a {
@@ -386,10 +387,12 @@ hr {
     justify-content: center;
   }
 
-  
-
   .show {
     visibility: initial;
+  }
+
+  .introduce-text {
+    visibility: hidden;
   }
 }
 
