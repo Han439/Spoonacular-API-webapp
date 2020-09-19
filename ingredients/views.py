@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import ByIngredients
 import dotenv, os, requests
 from dotenv import load_dotenv
+import random
 
 
 load_dotenv()
@@ -23,11 +24,12 @@ def all_recipes(request):
 			ingredients_list = str(form.cleaned_data['ingredients']).split()
 			# config API before sending
 			uri = 'https://api.spoonacular.com/recipes/findByIngredients'
-			params = {'apiKey': keys, 'ingredients': ingredients_list, 'number': '15'}
+			params = {'apiKey': keys, 'ingredients': ingredients_list, 'number': '50'}
 			
 			# get the API response
 			response = requests.get(uri, params=params)
 			recipes = response.json()
+			random.shuffle(recipes)
 
 			# get link to to recipe
 				
@@ -48,7 +50,7 @@ def all_recipes(request):
 
 	# pack up datas send for templates render
 	context = {
-			'recipes': recipes,
+			'recipes': recipes[:8],
 			'form': form,
 			}
 
