@@ -399,4 +399,8 @@ hr {
   .recipe-container {
     width: initial;
   }
+
+  .search-form {
+    width: 100%;
+  }
 }
