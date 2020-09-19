@@ -12,7 +12,7 @@ keys = os.getenv('SPOONACULAR_API_KEY')
 def recipe_by_ingredients(request):
 	form = ByIngredients()
 	context = {'form': form}
-	return render(request, 'ingredients\\search.html', {'form': form})
+	return render(request, 'ingredients/search.html', {'form': form})
 
 def all_recipes(request):
 	form = ByIngredients(request.GET)
