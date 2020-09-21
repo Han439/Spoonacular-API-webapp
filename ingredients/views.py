@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse, redirect
 from .forms import ByIngredients
 import dotenv, os, requests
 from dotenv import load_dotenv
@@ -30,31 +30,17 @@ def all_recipes(request):
 			response = requests.get(uri, params=params)
 			recipes = response.json()
 			random.shuffle(recipes)
-
-			# get link to to recipe
-				
-			# recipe_param = {'apiKey': keys}
-
-			# for recipe_num in range(len(recipes)):
-			# 	recipe_id = recipes[recipe_num]['id']
-			# 	url = f'https://api.spoonacular.com/recipes/{recipe_id}/information'
-			# 	res = requests.get(url, params=recipe_param).json()
-			# 	if 'spoonacularSourceUrl' in res.keys():
-			# 		sourceUrl = res['spoonacularSourceUrl']
-			# 	else:
-			# 		sourceUrl = res['sourceUrl']
-
-			# 	recipes[recipe_num]['sourceUrl'] = sourceUrl
 		else:
 			recipes = []
 
 	# pack up datas send for templates render
-	context = {
-			'recipes': recipes[:8],
-			'form': form,
-			}
-
-	return render(request, 'ingredients/recipes.html', context)
+		context = {
+				'recipes': recipes[:8],
+				'form': form,
+				}
+		return render(request, 'ingredients/recipes.html', context)
+	else:
+		return redirect(reverse('recipe_by_ingredients'))
 
 def recipe_detail(request, recipe_id):
 
@@ -76,9 +62,6 @@ def recipe_detail(request, recipe_id):
 
 	# get Ingredients Price Break Down Widget
 	widget_header = {'accept': 'text/html'}
-
-	# price_json_endpoint = f'https://api.spoonacular.com/recipes/{recipe_id}/priceBreakdownWidget.json'
-	# price_json = requests.get(price_json_endpoint, params={'apiKey': keys}).json()
 
 	# get Nutrition Break Down Widget
 	nutrition_endpoint = f'https://api.spoonacular.com/recipes/{recipe_id}/nutritionWidget'
